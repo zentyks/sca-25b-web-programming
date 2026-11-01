@@ -1,69 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aibek Mamatibraimov</title>
-    <strong><h1>Мое портфолио</h1></strong>
-    <h2><a href="#schedule">Обо мне</a></h2>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aibek — портфолио</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="st.css">
+
+  <script src="jas.js" defer></script>
 </head>
 <body>
-    <main>
 
-    <figure>
-        <img src="a.jpeg" alt="Условное здание университета с колоннами"
-        width="480" height="">
-        <h1><figcaption>Айбек Маматибраимов</figcaption></h1>
-      </figure>
-    </main>
-    <section id="schedule">
-      <table>
-        <caption>Мои умения</caption>
-        <thead>
-          <tr>
-            <th scope="col">Умения</th>
-            <th scope="col">Уровень</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="rowgroup" >Программирование</th>
-            <td>средний</td>
-          </tr>
-          <tr>
-            <th scope="row">Математика</th>
-            <td>высокий</td>
-          </tr>
-          <tr>
-            <th scope="row">Русский</th>
-            <td>средний</td>
-          </tr>
-          <tr>
-            <th scope="row">Английский</th>
-            <td>высокий</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th scope="row">Всего умений</th>
-            <td>4</td>
-          </tr>
-        </tfoot>
-      </table>
-      <!-- rowspan объединяет строки, colspan — столбцы. -->
-    </section>
+  <header>
+    <div class="logo">John Doe</div>
+    <nav>
+      <a href="#top">Home</a>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+    </nav>
+    <div class="socials">
+      <a href="#">M</a><a href="#">Bē</a><a href="#">tw</a>
+      <button id="theme-toggle" type="button" aria-label="Сменить тему">☾</button>
+    </div>
+  </header>
 
-    <footer>
-    <hr>
-    <h2>Мои контакты</h2>
-    <address>
-      Автор: Айбек Маматибраимов<br>
-      Пример email: <a href="mailto:student@example.com">student@example.com</a>.
-    </address>
-    <p><small>&copy; 
-        Мое портфолио и умения
-    </small></p>
-    <p><a href="#top">Вернуться наверх ↑</a></p>
-  </footer>
+  <section class="hero" id="top">
+    <div>
+      <h2>Hello, I’m Aibek,</h2>
+      <h1>IT-Progger</h1>
+      <p>based in Kyrgyzstan.</p>
+      <a class="btn" href="https://github.com/zentyks" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <div class="photo">
+      <span class="plus">+<br>+</span>
+      <div class="blob">
+        <img src="aibek.jpeg" alt="Aibek">
+      </div>
+      <span class="slashes">///</span>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>about me</h2>
+    <p>Hello! My name is Aibek. I am a college student, and I study programming and information technology.</p>
+    <p>I am really interested in computers, technology, and game development. I am currently learning C# and Java, and I want to improve my programming skills. In the future, I would like to become a professional software developer and create my own games and applications.</p>
+    <p>In my free time, I enjoy playing computer games, going to the gym, swimming, and playing football. I also like learning new things and developing myself.</p>
+  </section>
+
+  <section class="work" id="work">
+    <h2>work</h2>
+    <p class="lead">Besides studying, I am also gaining practical experience in programming. I practice my skills by helping my relatives with programming tasks. I sometimes work part-time fixing bugs and correcting code. This helps me gain real-world experience, improve my problem-solving skills, and understand how programming works in practice.</p>
+
+    <div class="cards">
+      <article class="card">
+        <img src="math.webp" alt="Matematika">
+        <h3>My hobbies</h3>
+        <p>I have strong mathematical skills, and mathematics is one of my strengths. I enjoy solving complex problems and learning new mathematical concepts. I believe that my knowledge of mathematics helps me a lot in programming because it develops my logical thinking and problem-solving skills</p>
+      </article>
+
+      <article class="card card--low">
+        <img src="english.jpg" alt="English">
+        <h3>English</h3>
+        <p>I also have a strong command of English. My English level is around B2, and I am working towards reaching C1. I enjoy learning new vocabulary, improving my communication skills, and expanding my knowledge. I believe that English is essential in the IT industry because it allows me to communicate with people from different countries, understand technical documentation, and access more learning opportunities</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>contact</h2>
+    <div class="contact-row">
+      <img class="contact-photo" src="contact.jpg" alt="Aibek">
+      <a class="email" href="mailto:ajbekmamatibraimov@gmail.com">ajbekmamatibraimov@gmail.com</a>
+    </div>
+  </section>
+
+  <button id="to-top" type="button" aria-label="Наверх">↑</button>
+
 </body>
 </html>
