@@ -45,27 +45,6 @@ const revealObserver = new IntersectionObserver(
 revealItems.forEach((el) => revealObserver.observe(el));
 
 
-
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll("nav a");
-
-const navObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        navLinks.forEach((link) => {
-          link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
-        });
-      }
-    });
-  },
-  { rootMargin: "-40% 0px -55% 0px" }           
-);
-
-sections.forEach((section) => navObserver.observe(section));
-
-
-
 const toTop = document.querySelector("#to-top");
 
 window.addEventListener("scroll", () => {
@@ -76,16 +55,3 @@ toTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-const emailLink = document.querySelector(".email");
-
-emailLink.addEventListener("click", (event) => {
-  event.preventDefault();                          
-  const email = emailLink.textContent.trim();
-
-  navigator.clipboard.writeText(email).then(() => {
-    emailLink.textContent = "Скопировано ✓";
-    setTimeout(() => (emailLink.textContent = email), 1500);
-  }).catch(() => {
-    window.location.href = "mailto:" + email;     
-  });
-});
