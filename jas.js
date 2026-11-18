@@ -55,49 +55,8 @@ toTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-document.querySelectorAll('a.nav-link[href^="#"]').forEach(link => {
-  link.addEventListener('click', (e) => {
-    const id = link.getAttribute('href');
-    const target = document.querySelector(id);
-    if (!target) return;
-    e.preventDefault();
 
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.pushState(null, '', id);
-  });
-});
-window.addEventListener('load', () => {
-  const { hash } = window.location;
-  if (hash) {
-    const target = document.querySelector(hash);
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-});
-
-    const g = document.getElementById('greeting');
-    const btn = document.getElementById('askName');
-
-   
-    function showGreeting(name) {
-      g.textContent = name
-        ? `Привет, ${name}!`
-        : 'Добро пожаловать!';
-    }
-
-    function askName() {
-      const name = prompt('Как тебя зовут?');
-      if (name) {
-        localStorage.setItem('visitorName', name);
-      } else {
-        localStorage.removeItem('visitorName');
-      }
-      showGreeting(localStorage.getItem('visitorName'));
-    }
-
-    btn.addEventListener('click', askName);
-
-    showGreeting(localStorage.getItem('visitorName'));
-
+// Плавная прокрутка по ссылкам меню
 document.querySelectorAll('a.nav-link[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {
     const id = link.getAttribute('href');
@@ -117,3 +76,28 @@ window.addEventListener('load', () => {
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 });
+
+
+// Интерактивное приветствие с пользователем
+const g = document.getElementById('greeting');
+const btn = document.getElementById('askName');
+
+function showGreeting(name) {
+  g.textContent = name
+    ? `Привет, ${name}!`
+    : 'Добро пожаловать!';
+}
+
+function askName() {
+  const name = prompt('Как тебя зовут?');
+  if (name && name.trim() !== '') {
+    localStorage.setItem('visitorName', name.trim());
+  } else {
+    localStorage.removeItem('visitorName');
+  }
+  showGreeting(localStorage.getItem('visitorName'));
+}
+
+btn.addEventListener('click', askName);
+
+showGreeting(localStorage.getItem('visitorName'));
