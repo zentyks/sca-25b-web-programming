@@ -15,11 +15,17 @@
   <header> 
     <div class="logo">MA</div>
     <nav>
-      <a href="#top">Home</a>
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
+      <a class="nav-link" href="#top">Home</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#work">Work</a>
+      <a class="nav-link" href="#contact">Contact</a>
     </nav>
     <div class="socials">
+      <!-- Блок для функции имени из JS -->
+      <div class="greeting-box">
+        <span id="greeting">Добро пожаловать!</span>
+        <button id="askName" type="button" title="Изменить имя">✏️</button>
+      </div>
       <a href="https://www.instagram.com/">In</a><a href="https://www.whatsapp.com/">Wh</a><a href="https://telegram.org/">Tg</a>
       <button id="theme-toggle" type="button" aria-label="Сменить тему">☾</button>
     </div>
