@@ -1,14 +1,42 @@
+const burger = document.getElementById('hamburger');
+const menu = document.getElementById('menu');
+
+if (burger && menu) {
+  burger.addEventListener('click', () => {
+    const expanded = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!expanded));
+    menu.classList.toggle('open');
+  });
+
+  // Закрыть меню по клику на пункт (на мобиле)
+  menu.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A' && window.matchMedia('(max-width: 768px)').matches) {
+      menu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Закрыть по Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') {
+      burger.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+    }
+  });
+}
+
+
+// --- 2. Переключение тем ---
 const themeBtn = document.querySelector("#theme-toggle");
 const root = document.documentElement; 
 
 function setTheme(theme) {
   root.setAttribute("data-theme", theme);          
-  themeBtn.textContent = theme === "dark" ? "☀" : "☾";
+  if (themeBtn) themeBtn.textContent = theme === "dark" ? "☀" : "☾";
   try {
     localStorage.setItem("theme", theme);         
   } catch (e) {}
 }
-
 
 let savedTheme = null;
 try {
@@ -17,13 +45,15 @@ try {
 const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 setTheme(savedTheme || (systemDark ? "dark" : "light"));
 
-themeBtn.addEventListener("click", () => {
-  const current = root.getAttribute("data-theme");
-  setTheme(current === "dark" ? "light" : "dark");
-});
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme");
+    setTheme(current === "dark" ? "light" : "dark");
+  });
+}
 
 
-
+// --- 3. Анимация появления при прокрутке (Reveal) ---
 const revealItems = document.querySelectorAll(
   ".about h2, .about p, .work h2, .work .lead, .card, .contact h2, .contact-row"
 );
@@ -45,18 +75,21 @@ const revealObserver = new IntersectionObserver(
 revealItems.forEach((el) => revealObserver.observe(el));
 
 
+// --- 4. Кнопка «Наверх» ---
 const toTop = document.querySelector("#to-top");
 
-window.addEventListener("scroll", () => {
-  toTop.classList.toggle("show", window.scrollY > 400);
-});
+if (toTop) {
+  window.addEventListener("scroll", () => {
+    toTop.classList.toggle("show", window.scrollY > 400);
+  });
 
-toTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+  toTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
 
 
-// Плавная прокрутка по ссылкам меню
+// --- 5. Плавная прокрутка по ссылкам меню ---
 document.querySelectorAll('a.nav-link[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {
     const id = link.getAttribute('href');
@@ -78,11 +111,12 @@ window.addEventListener('load', () => {
 });
 
 
-// Интерактивное приветствие с пользователем
+// --- 6. Интерактивное приветствие ---
 const g = document.getElementById('greeting');
 const btn = document.getElementById('askName');
 
 function showGreeting(name) {
+  if (!g) return;
   g.textContent = name
     ? `Привет, ${name}!`
     : 'Добро пожаловать!';
@@ -98,6 +132,8 @@ function askName() {
   showGreeting(localStorage.getItem('visitorName'));
 }
 
-btn.addEventListener('click', askName);
+if (btn) {
+  btn.addEventListener('click', askName);
+}
 
 showGreeting(localStorage.getItem('visitorName'));
