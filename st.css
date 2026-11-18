@@ -29,7 +29,26 @@ header{display:flex;align-items:center;justify-content:space-between;padding:20p
 header .logo{font-weight:600}
 nav{display:flex;gap:48px}
 nav a,.socials a{color:var(--ink);text-decoration:none}
-.socials{display:flex;gap:14px;font-weight:700;font-size:12px}
+.socials{display:flex;gap:14px;font-weight:700;font-size:12px;align-items:center}
+
+/* Стили для блока приветствия пользователя */
+.greeting-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  background: var(--accent);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--dark);
+}
+#askName {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+}
 
 
 .hero{
@@ -73,7 +92,7 @@ nav a,.socials a{color:var(--ink);text-decoration:none}
 
 
 @media (max-width:720px){
-  header{padding:16px 20px}
+  header{padding:16px 20px;flex-wrap: wrap;gap: 15px;}
   nav{gap:20px}
   .hero{flex-direction:column-reverse;align-items:flex-start;padding-bottom:80px}
 }
@@ -104,7 +123,6 @@ nav a,.socials a{color:var(--ink);text-decoration:none}
   .card--low{margin-top:0}
 }
 
-.socials{align-items:center}
 #theme-toggle{
   background:none;border:1px solid var(--ink);color:var(--ink);
   width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;line-height:1;
